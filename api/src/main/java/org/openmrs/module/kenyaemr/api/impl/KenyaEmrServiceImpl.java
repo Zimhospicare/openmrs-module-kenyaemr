@@ -123,7 +123,7 @@ public class KenyaEmrServiceImpl extends BaseOpenmrsService implements KenyaEmrS
 			Context.addProxyPrivilege(PrivilegeConstants.GET_GLOBAL_PROPERTIES);
 
 			GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(EmrConstants.GP_DEFAULT_LOCATION);
-			return gp != null ? ((Location) gp.getValue()) : null;
+			return gp != null ? Context.getLocationService().getLocation(Integer.parseInt((String) gp.getValue())) : null;
 		}
 		finally {
 			Context.removeProxyPrivilege(PrivilegeConstants.GET_LOCATIONS);

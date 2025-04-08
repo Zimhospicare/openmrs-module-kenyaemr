@@ -539,7 +539,7 @@ public class KenyaemrCoreRestController extends BaseRestController {
                     HttpStatus.NOT_FOUND);
         }
 
-        Location location = (Location) gp.getValue();
+        Location location = Context.getLocationService().getLocation(Integer.parseInt((String) gp.getValue()));
         ObjectNode locationNode = JsonNodeFactory.instance.objectNode();
 
         locationNode.put("locationId", location.getLocationId());
